@@ -20,7 +20,7 @@ body {
 
 /* --- Marco 16:9 --- */
 .frame {
-  width: min(900px, 95vw);
+  width: min(1400px, 92vw);
   aspect-ratio: 16 / 9;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
@@ -67,14 +67,14 @@ body {
 }
 
 /* ==========================================
-   FRANJA INFERIOR · 33% DE ALTURA
+   FRANJA INFERIOR · 38% DE ALTURA
    ========================================== */
 .text-strip {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 33%;
+  height: 38%;
   z-index: 3;
   background: linear-gradient(
     to top,
@@ -116,7 +116,7 @@ body {
    ========================================== */
 .linea-track {
   position: absolute;
-  top: 62%;
+  top: 58%;
   left: 0;
   width: max-content;
   height: auto;
@@ -145,7 +145,7 @@ body {
    ========================================== */
 .text-block {
   flex-shrink: 0;
-  max-width: 240px;
+  max-width: 320px;
   white-space: normal;
   display: flex;
   flex-direction: column;
@@ -155,7 +155,7 @@ body {
 }
 
 .block-title {
-  font-size: clamp(0.75rem, 1.6vw, 0.95rem);
+  font-size: clamp(0.85rem, 1.3vw, 1.1rem);
   font-weight: 400;
   letter-spacing: 0.15em;
   color: rgba(240, 235, 225, 0.65);
@@ -165,7 +165,7 @@ body {
 }
 
 .block-body {
-  font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+  font-size: clamp(0.75rem, 1vw, 0.95rem);
   font-weight: 200;
   letter-spacing: 0.04em;
   color: rgba(240, 235, 225, 0.35);
