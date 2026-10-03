@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>TechnOKA · Ecosistema</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    body {
+      background-color: #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, sans-serif;
+      gap: 1.5rem;
+      padding: 2rem 0;
+    }
+    .frame {
+      width: min(900px, 95vw);
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    }
+    .botones-idioma {
+      position: absolute;
+      top: 55px;
+      right: 20px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .botones-idioma button {
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(242, 239, 230, 0.15);
+      border-radius: 4px;
+      width: 28px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: rgba(242, 239, 230, 0.5);
+      font-size: 0.6rem;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .botones-idioma button:hover {
+      border-color: rgba(242, 239, 230, 0.4);
+      color: rgba(242, 239, 230, 0.95);
+    }
+    .botones-idioma button.activo {
+      color: rgba(242, 239, 230, 0.95);
+      border-color: rgba(242, 239, 230, 0.6);
+    }
+    .boton-silencio {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 10;
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(242, 239, 230, 0.15);
+      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: rgba(242, 239, 230, 0.7);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .boton-silencio:hover {
+      border-color: rgba(242, 239, 230, 0.4);
+      color: rgba(242, 239, 230, 0.95);
+    }
+    .footer-contacto {
+      text-align: center;
+      color: rgba(240, 235, 225, 0.4);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      font-family: "Courier New", Courier, monospace;
+      text-transform: uppercase;
+    }
+    .footer-contacto a {
+      color: rgba(240, 235, 225, 0.55);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-contacto a:hover {
+      color: rgba(240, 235, 225, 0.95);
+    }
+    .footer-contacto span {
+      margin: 0 0.8rem;
+      opacity: 0.4;
+    }
+    .text-strip[data-lang="es"] .lang-en,
+    .text-strip[data-lang="es"] .lang-pt,
+    .text-strip[data-lang="en"] .lang-es,
+    .text-strip[data-lang="en"] .lang-pt,
+    .text-strip[data-lang="pt"] .lang-es,
+    .text-strip[data-lang="pt"] .lang-en {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="frame">
+
+    <div class="boton-silencio" id="botonSilencio" title="Silenciar / Activar sonido">🔊</div>
+    <div class="botones-idioma">
+      <button id="btnEN" title="English">EN</button>
+      <button id="btnES" class="activo" title="Español">ES</button>
+      <button id="btnPT" title="Português">PT</button>
+    </div>
+
+    <div class="video-container">
+      <video id="mi-video" autoplay muted loop playsinline>
+        <source src="media/lanternaweb.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <h1 class="title">TechnOKA</h1>
+
+    <div class="text-strip" id="textStrip" data-lang="es">
+
+      <div class="text-track lang-es">
+        <div class="text-block">
+          <p class="block-title">La Jaula que Libera</p>
+          <p class="block-body">
+Una estructura que no encierra.<br>
+Sonido, imagen y luz traducen<br>
+lo que un territorio dice de sí mismo.<br>
+<br>
+El público no mira: interfiere.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">Zona de Interferencia</p>
+          <p class="block-body">
+Un dispositivo que no exhibe: provoca.<br>
+Ocupar el espacio con lo que ya está ahí:<br>
+datos, cuerpos, ruido, memoria.<br>
+<br>
+La estructura no es prisión: es material.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">Llave Dédalo</p>
+          <p class="block-body">
+Interfaz digital: una geometría 3D<br>
+que el público pliega con gestos.<br>
+<br>
+Cada gesto es una interferencia.<br>
+Cada interferencia, una variación.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">El Arquitecto</p>
+          <p class="block-body">
+Cuarenta años de escena.<br>
+Cuerpo, palabra, imagen, sonido.<br>
+De Montevideo a São Paulo,<br>
+con temporada en Estocolmo.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">TechnOKA</p>
+          <p class="block-body">
+Ecosistema de interferencia colectiva.<br>
+Instalaciones, artes visuales, sonido.<br>
+Un instrumento que suena con datos.<br>
+<br>
+La jaula no es prisión.<br>
+Es el material del vuelo.
+</p>
+        </div>
+      </div>
+
+      <div class="text-track lang-en">
+        <div class="text-block">
+          <p class="block-title">The Cage That Liberates</p>
+          <p class="block-body">
+A structure that doesn't confine.<br>
+Sound, image, and light translate<br>
+what a territory says about itself.<br>
+<br>
+The audience doesn't watch: it interferes.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">Interference Zone</p>
+          <p class="block-body">
+A device that doesn't display: it provokes.<br>
+Occupy the space with what's already there:<br>
+data, bodies, noise, memory.<br>
+<br>
+The structure is not a prison: it's material.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">Daedalus Key</p>
+          <p class="block-body">
+Digital interface: a 3D geometry<br>
+the audience folds with gestures.<br>
+<br>
+Each gesture is an interference.<br>
+Each interference, a variation.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">The Architect</p>
+          <p class="block-body">
+Forty years on stage.<br>
+Body, word, image, sound.<br>
+From Montevideo to São Paulo,<br>
+with season in Stockholm.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">TechnOKA</p>
+          <p class="block-body">
+Ecosystem of collective interference.<br>
+Installation, visual arts, sound.<br>
+An instrument that sounds with data.<br>
+<br>
+The cage is not a prison.<br>
+It's the material of flight.
+</p>
+        </div>
+      </div>
+
+      <div class="text-track lang-pt">
+        <div class="text-block">
+          <p class="block-title">A Jaula que Liberta</p>
+          <p class="block-body">
+Uma estrutura que não aprisiona.<br>
+Som, imagem e luz traduzem<br>
+o que um território diz de si mesmo.<br>
+<br>
+O público não assiste: interfere.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">Zona de Interferência</p>
+          <p class="block-body">
+Um dispositivo que não exibe: provoca.<br>
+Ocupar o espaço com o que já está lá:<br>
+dados, corpos, ruído, memória.<br>
+<br>
+A estrutura não é prisão: é material.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">Chave Dédalo</p>
+          <p class="block-body">
+Interface digital: uma geometria 3D<br>
+que o público dobra com gestos.<br>
+<br>
+Cada gesto é uma interferência.<br>
+Cada interferência, uma variação.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">O Arquiteto</p>
+          <p class="block-body">
+Quarenta anos de palco.<br>
+Corpo, palavra, imagem, som.<br>
+De Montevidéu a São Paulo,<br>
+com temporada em Estocolmo.
+</p>
+        </div>
+        <div class="text-block">
+          <p class="block-title">TechnOKA</p>
+          <p class="block-body">
+Ecossistema de interferência coletiva.<br>
+Instalações, artes visuais, som.<br>
+Um instrumento que soa com dados.<br>
+<br>
+A jaula não é prisão.<br>
+É o material do voo.
+</p>
+        </div>
+      </div>
+
+      <div class="linea-track" id="lineaTrack">
+        <p class="linea-roja">function interferencia(dato,locacion){return sin(dato*tiempo)} · osc.send('/technoka/gate/'+planeta,valor) · const carta={sol:28.6,luna:15.7,marte:2.2,jupiter:11.1} · function aspecto(a,b){return abs(a-b)&lt;umbral} · cluster.leon=[sol,mercurio,jupiter] · cluster.aries=[saturno,neptuno] · pipeline.python→osc→supercollider · 10planetas · 4capas · 13aspectos · silencio_activo=true · ruido_rosa · cada_ejecucion=unica · reinstanciar(locacion) · decoder.tokeniza(fragmento) · rotar(entre_locaciones) · llave_dedalo=input(publico) · geometria.plegable · cada_gesto=una_variacion · data_social→sonido→video→luz · obra_colectiva · funcion_de_perdida · paradoja_duplicada · lo_imprevisible=lo_necesario · technoka=un_sistema_generativo</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer-contacto">
+    <a href="mailto:dedalo@technoka.org">dedalo@technoka.org</a>
+    <span>·</span>
+    <a href="https://www.are.na/andres-perez-barrera" target="_blank" rel="noopener">Are.na</a>
+  </footer>
+
+  <script>
+    (function() {
+      // === RECURSOS ===
+      const videos = [
+        'media/lanternaweb.mp4',
+        'media/metroweb.mp4',
+        'media/QUIXweb1.mp4'
+      ];
+      const audios = [
+        'media/gelonamontanhaweb.mp3',
+        'media/gelonamontanhaweb01.mp3',
+        'media/gelonamontanhaweb02.mp3',
+        'media/nordestweb.mp3',
+        'media/theta.mp3'
+      ];
+
+      const volumen = {
+        'media/gelonamontanhaweb.mp3': 0.5,
+        'media/gelonamontanhaweb01.mp3': 0.5,
+        'media/gelonamontanhaweb02.mp3': 0.5,
+        'media/nordestweb.mp3': 0.5,
+        'media/theta.mp3': 0.25
+      };
+
+      // === RANDOM VIDEO ===
+      const video = document.getElementById('mi-video');
+      const videoRandom = videos[Math.floor(Math.random() * videos.length)];
+      video.querySelector('source').src = videoRandom;
+      video.load();
+      video.play();
+
+      // === RANDOM AUDIO ===
+      const audioRandom = audios[Math.floor(Math.random() * audios.length)];
+      const audio = new Audio(audioRandom);
+      audio.loop = true;
+      audio.volume = volumen[audioRandom] || 0.5;
+
+      let audioActivo = true;
+      let audioIniciado = false;
+
+      // === BOTÓN MUTE ===
+      const botonSilencio = document.getElementById('botonSilencio');
+
+      function iniciarAudio() {
+        audio.play().catch(function() {});
+        audioIniciado = true;
+        audioActivo = true;
+        botonSilencio.textContent = '🔊';
+      }
+
+      botonSilencio.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!audioIniciado) {
+          iniciarAudio();
+          return;
+        }
+        audioActivo = !audioActivo;
+        if (audioActivo) {
+          audio.play().catch(function() {});
+          botonSilencio.textContent = '🔊';
+        } else {
+          audio.pause();
+          botonSilencio.textContent = '🔇';
+        }
+      });
+
+      document.addEventListener('click', function() {
+        if (!audioIniciado) iniciarAudio();
+      });
+      document.addEventListener('touchstart', function() {
+        if (!audioIniciado) iniciarAudio();
+      });
+      document.addEventListener('keydown', function() {
+        if (!audioIniciado) iniciarAudio();
+      });
+
+      // === BOTONES IDIOMA ===
+      const strip = document.getElementById('textStrip');
+      ['EN', 'ES', 'PT'].forEach(function(idi) {
+        const btn = document.getElementById('btn' + idi);
+        if (btn) {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            strip.setAttribute('data-lang', idi.toLowerCase());
+            ['EN', 'ES', 'PT'].forEach(function(i) {
+              document.getElementById('btn' + i).classList.remove('activo');
+            });
+            btn.classList.add('activo');
+          });
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

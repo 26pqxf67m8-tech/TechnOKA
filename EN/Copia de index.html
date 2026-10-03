@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>TechnOKA · Ecosistema</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .boton-silencio {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 10;
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(242, 239, 230, 0.15);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: rgba(242, 239, 230, 0.7);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .boton-silencio:hover {
+      border-color: rgba(242, 239, 230, 0.4);
+      color: rgba(242, 239, 230, 0.95);
+    }
+  </style>
+</head>
+<body>
+  <main class="frame">
+
+    <div class="boton-silencio" id="botonSilencio" title="Silenciar / Activar sonido">🔊</div>
+
+    <div class="video-container">
+      <video id="mi-video" autoplay muted loop playsinline>
+        <source src="" type="video/mp4" />
+      </video>
+    </div>
+
+    <audio id="mi-audio" autoplay loop>
+      <source src="" type="audio/mpeg" />
+    </audio>
+
+        <!-- Título fijo -->
+    <h1 class="title">TechnOKA</h1>
+
+    <!-- Línea de texto sin sentido que atraviesa todos los bloques -->
+    <div class="linea-bursatil">
+      <p>a7k9m2xw4p1q8v3n6r5s0t2u9b1c3d5e7f9g2h4i6j8k1l3m5n7o9p2q4r6s8t1u3v5w7x9y0z</p>
+    </div>
+
+    <!-- Franja inferior con carrusel de párrafos -->
+    <div class="text-strip" id="textStrip">
+
+        
+
+        <!-- Bloque 1 -->
+        <div class="text-block">
+          <p class="block-title">La Jaula que Libera</p>
+          <p class="block-body">
+Habilitar al público a intervenir con tecnología<br>
+y software en una instalación inmersiva.<br>
+Sonido, video e iluminación traducen<br>
+los datos sociales en obra colectiva.
+</p>
+        </div>
+
+        <!-- Bloque 2 -->
+        <div class="text-block">
+          <p class="block-title">Máquina de Guerra</p>
+          <p class="block-body">
+Ofrecer un espacio experimental e interactivo<br>
+que provoque el contacto con la capacidad<br>
+creativa de forma espontánea y colectiva.<br>
+Itinerar donde la estructura no es prisión.
+</p>
+        </div>
+
+        <!-- Bloque 3 -->
+        <div class="text-block">
+          <p class="block-title">Llave Dédalo</p>
+          <p class="block-body">
+Interfaz digital que permite al público<br>
+manipular colectivamente una geometría 3D.<br>
+Cada gesto es una interferencia.<br>
+Cada interferencia, una variación.
+</p>
+        </div>
+
+        <!-- Bloque 4 -->
+        <div class="text-block">
+          <p class="block-title">Arquitecto del Modelo</p>
+          <p class="block-body">
+Creador e intérprete en performance,<br>
+escritura, visualidad, sonido y tecnología.<br>
+Montevideo · São Paulo.<br>
+Itinerante, interdisciplinario, independiente.
+</p>
+        </div>
+
+        <!-- Bloque 5 -->
+        <div class="text-block">
+          <p class="block-title">TechnOKA</p>
+          <p class="block-body">
+Actúa como un espejo simbólico.<br>
+A partir de los mismos datos nativos en cada nodo<br>
+produce un muestreo que se manifiesta<br>
+de forma artística y colectiva.<br>
+Intercambia impresiones transformadas en obra,<br>
+revelando la capacidad subjetiva de transformación.
+</p>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      const videoElement = document.getElementById('mi-video');
+      const sourceVideo = videoElement.querySelector('source');
+      const videos = ['media/lanternaweb.mp4','media/metroweb.mp4','media/QUIXweb1.mp4'];
+      const videoActual = videos[Math.floor(Math.random() * videos.length)];
+      sourceVideo.setAttribute('src', videoActual);
+      videoElement.load();
+
+      const audioElement = document.getElementById('mi-audio');
+      audioElement.volume = 0.3;
+      const sourceAudio = audioElement.querySelector('source');
+      const audios = ['media/gelonamontanhaweb.mp3','media/gelonamontanhaweb01.mp3','media/gelonamontanhaweb02.mp3','media/nordestweb.mp3','media/theta.mp3'];
+      const audioActual = audios[Math.floor(Math.random() * audios.length)];
+      sourceAudio.setAttribute('src', audioActual);
+      audioElement.load();
+
+      const botonSilencio = document.getElementById('botonSilencio');
+      let silenciado = false;
+      botonSilencio.addEventListener('click', () => {
+        silenciado = !silenciado;
+        audioElement.muted = silenciado;
+        botonSilencio.textContent = silenciado ? '🔇' : '🔊';
+      });
+    })();
+  </script>
+
+  <script>
+    (function() {
+      const bloques = document.querySelectorAll('.block-body');
+      bloques.forEach(bloque => {
+        bloque.classList.add('flecha');
+        const lineas = bloque.innerHTML.split('<br>').map(l => l.trim()).filter(l => l.length > 0);
+        let nuevoHTML = '';
+        const paso = 12;
+        const totalLineas = lineas.length;
+        const centro = Math.floor(totalLineas / 2);
+        lineas.forEach((linea, i) => {
+          const dist = Math.abs(i - centro);
+          const pad = dist * paso;
+          nuevoHTML += `<span class="linea" style="display:block;padding-left:${pad}px;">${linea}</span>`;
+        });
+        bloque.innerHTML = nuevoHTML;
+      });
+    })();
+  </script>
+</body>
+</html>
