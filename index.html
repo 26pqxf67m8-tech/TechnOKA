@@ -412,6 +412,7 @@ A jaula não é prisão.<br>
           btn.addEventListener('click', function(e) {
             e.stopPropagation();
             document.body.setAttribute('data-lang', idi.toLowerCase());
+strip.setAttribute('data-lang', idi.toLowerCase());
             ['EN', 'ES', 'PT'].forEach(function(i) {
               document.getElementById('btn' + i).classList.remove('activo');
             });
