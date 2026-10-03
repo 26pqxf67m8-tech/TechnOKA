@@ -203,3 +203,11 @@ body {
     transform: translateY(-50%) translateX(-50%);
   }
 }
+body[data-lang="es"] .lang-en,
+body[data-lang="es"] .lang-pt,
+body[data-lang="en"] .lang-es,
+body[data-lang="en"] .lang-pt,
+body[data-lang="pt"] .lang-es,
+body[data-lang="pt"] .lang-en {
+  display: none;
+}

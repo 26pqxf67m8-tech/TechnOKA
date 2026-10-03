@@ -129,7 +129,7 @@
     }
   </style>
 </head>
-<body>
+<body data-lang="es">
 
   <main class="frame">
 
@@ -321,6 +321,10 @@ A jaula não é prisão.<br>
     <a href="mailto:dedalo@technoka.org">dedalo@technoka.org</a>
     <span>·</span>
     <a href="https://www.are.na/andres-perez-barrera" target="_blank" rel="noopener">Are.na</a>
+    <span>·</span>
+    <span class="lang-es">Recargá. Cada secuencia es irrepetible.</span>
+    <span class="lang-en">Reload. Every sequence is unrepeatable.</span>
+    <span class="lang-pt">Recarregue. Cada sequência é irrepetível.</span>
   </footer>
 
   <div class="aviso-audio" id="avisoAudio">
@@ -407,7 +411,7 @@ A jaula não é prisão.<br>
         if (btn) {
           btn.addEventListener('click', function(e) {
             e.stopPropagation();
-            strip.setAttribute('data-lang', idi.toLowerCase());
+            document.body.setAttribute('data-lang', idi.toLowerCase());
             ['EN', 'ES', 'PT'].forEach(function(i) {
               document.getElementById('btn' + i).classList.remove('activo');
             });
