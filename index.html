@@ -105,6 +105,20 @@
       margin: 0 0.8rem;
       opacity: 0.4;
     }
+    .aviso-audio {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      color: rgba(240, 235, 225, 0.5);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
     .text-strip[data-lang="es"] .lang-en,
     .text-strip[data-lang="es"] .lang-pt,
     .text-strip[data-lang="en"] .lang-es,
@@ -180,7 +194,7 @@ con temporada en Estocolmo.
           <p class="block-title">TechnOKA</p>
           <p class="block-body">
 Ecosistema de interferencia colectiva.<br>
-Instalaciones, artes visuales, sonido.<br>
+Instalaciones, artes visuales, sonido, performances.<br>
 Un instrumento que suena con datos.<br>
 <br>
 La jaula no es prisión.<br>
@@ -226,14 +240,14 @@ Each interference, a variation.
 Forty years on stage.<br>
 Body, word, image, sound.<br>
 From Montevideo to São Paulo,<br>
-with season in Stockholm.
+with a season in Stockholm.
 </p>
         </div>
         <div class="text-block">
           <p class="block-title">TechnOKA</p>
           <p class="block-body">
 Ecosystem of collective interference.<br>
-Installation, visual arts, sound.<br>
+Installation, visual arts, sound, performances.<br>
 An instrument that sounds with data.<br>
 <br>
 The cage is not a prison.<br>
@@ -286,7 +300,7 @@ com temporada em Estocolmo.
           <p class="block-title">TechnOKA</p>
           <p class="block-body">
 Ecossistema de interferência coletiva.<br>
-Instalações, artes visuais, som.<br>
+Instalações, artes visuais, som, performances.<br>
 Um instrumento que soa com dados.<br>
 <br>
 A jaula não é prisão.<br>
@@ -309,9 +323,12 @@ A jaula não é prisão.<br>
     <a href="https://www.are.na/andres-perez-barrera" target="_blank" rel="noopener">Are.na</a>
   </footer>
 
+  <div class="aviso-audio" id="avisoAudio">
+    🔊 tocá para activar el sonido
+  </div>
+
   <script>
     (function() {
-      // === RECURSOS ===
       const videos = [
         'media/lanternaweb.mp4',
         'media/metroweb.mp4',
@@ -333,14 +350,12 @@ A jaula não é prisão.<br>
         'media/theta.mp3': 0.25
       };
 
-      // === RANDOM VIDEO ===
       const video = document.getElementById('mi-video');
       const videoRandom = videos[Math.floor(Math.random() * videos.length)];
       video.querySelector('source').src = videoRandom;
       video.load();
       video.play();
 
-      // === RANDOM AUDIO ===
       const audioRandom = audios[Math.floor(Math.random() * audios.length)];
       const audio = new Audio(audioRandom);
       audio.loop = true;
@@ -349,14 +364,15 @@ A jaula não é prisão.<br>
       let audioActivo = true;
       let audioIniciado = false;
 
-      // === BOTÓN MUTE ===
       const botonSilencio = document.getElementById('botonSilencio');
+      const avisoAudio = document.getElementById('avisoAudio');
 
       function iniciarAudio() {
         audio.play().catch(function() {});
         audioIniciado = true;
         audioActivo = true;
         botonSilencio.textContent = '🔊';
+        if (avisoAudio) avisoAudio.style.opacity = '0';
       }
 
       botonSilencio.addEventListener('click', function(e) {
@@ -385,7 +401,6 @@ A jaula não é prisão.<br>
         if (!audioIniciado) iniciarAudio();
       });
 
-      // === BOTONES IDIOMA ===
       const strip = document.getElementById('textStrip');
       ['EN', 'ES', 'PT'].forEach(function(idi) {
         const btn = document.getElementById('btn' + idi);
