@@ -148,7 +148,7 @@
 
     <h1 class="title">TechnOKA</h1>
 
-    <div class="text-strip" id="textStrip" data-lang="es">
+    <div class="text-strip" id="textStrip">
 
       <div class="text-track lang-es">
         <div class="text-block">
@@ -412,7 +412,6 @@ A jaula não é prisão.<br>
           btn.addEventListener('click', function(e) {
             e.stopPropagation();
             document.body.setAttribute('data-lang', idi.toLowerCase());
-strip.setAttribute('data-lang', idi.toLowerCase());
             ['EN', 'ES', 'PT'].forEach(function(i) {
               document.getElementById('btn' + i).classList.remove('activo');
             });
