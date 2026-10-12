@@ -211,3 +211,10 @@ body[data-lang="pt"] .lang-es,
 body[data-lang="pt"] .lang-en {
   display: none;
 }
+.footer-isni {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.65rem;
+  opacity: 0.5;
+  letter-spacing: 0.15em;
+}
